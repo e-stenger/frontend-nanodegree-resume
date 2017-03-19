@@ -246,4 +246,4 @@ window.addEventListener('load', initializeMap);
 window.addEventListener('resize', function(e) {
   Make sure the map bounds get updated on page resize
   map.fitBounds(mapBounds);
-});
+};
