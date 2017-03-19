@@ -6,6 +6,7 @@ var bio = {
 	    "email": "ericcstenger@gmail.com",
 	    "github": "e-stenger",
 	    "twitter": "@eric_stenger",
+	    "location": "Justin, Tx"
 },
 	"welcomeMessage": "Welcome to my page!",
 	"skills": ["Awesomeness","Playing Guitar","Super Dad","Woodworking"],
