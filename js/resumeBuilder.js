@@ -2,15 +2,13 @@ var bio = {
 "name" : "Eric Stenger",
 "role" : "Web Developer Superhero",
 "contacts":
-[
 {
 "mobile": "940-555-5555",
 "email": "ericcstenger@gmail.com",
 "github": "e-stenger",
 "twitter": "@eric_stenger",
 "location": "Justin, Tx"
-}
-],
+},
 "welcomeMessage": "Welcome to my page, why oh why am i doing this..oh yeah she's in the swing!",
 "skills": ["Awesomeness","Playing Guitar","Super Dad","Woodworking","Breaking this page!!","Not forEach loops"],
 "biopic": "images/bio_pic.jpg"
@@ -33,19 +31,19 @@ $("#skills").append(formattedSkills);
 }
 if (bio.contacts.length > 0) {
 bio.contacts.forEach(function(info) {
-var formattedMobile = HTMLmobile.replace("%data%",info.mobile);
+var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.info.mobile);
 $("#topContacts").append(formattedMobile);
 $("#footerContacts").append(formattedMobile);
-var formattedEmail = HTMLemail.replace("%data%",info.email);
+var formattedEmail = HTMLemail.replace("%data%",bio.contacts.info.email);
 $("#topContacts").append(formattedEmail);
 $("#footerContacts").append(formattedEmail);
-var formattedGithub = HTMLgithub.replace("%data%",info.github);
+var formattedGithub = HTMLgithub.replace("%data%",bio.contacts.info.github);
 $("#topContacts").append(formattedGithub);
 $("#footerContacts").append(formattedGithub);
-var formattedTwitter = HTMLtwitter.replace("%data%",info.twitter);
+var formattedTwitter = HTMLtwitter.replace("%data%",bio.contacts.info.twitter);
 $("#topContacts").append(formattedTwitter);
 $("#footerContacts").append(formattedTwitter);
-var formattedLocation = HTMLlocation.replace("%data%",info.location);
+var formattedLocation = HTMLlocation.replace("%data%",bio.contacts.info.location);
 $("#topContacts").append(formattedLocation);
 $("#footerContacts").append(formattedLocation);
 });

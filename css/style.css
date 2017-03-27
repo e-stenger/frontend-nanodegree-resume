@@ -1,7 +1,7 @@
 
 .education-entry,
 .work-entry {
-  background-color: #000;
+  background-color: #000; 
 }
 
 body {
@@ -23,6 +23,7 @@ h3,
 h4,
 
 h6 {
+  font-size: 18px;
   margin      : 0;
   padding     : 0;
 
@@ -194,8 +195,6 @@ ul {
 
 img {
   padding : 10px;
-  width: 50%;
-  margin: auto;
 }
 
 span {
