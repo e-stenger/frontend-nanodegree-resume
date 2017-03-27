@@ -1,244 +1,223 @@
 var bio = {
-	"name" : "Eric Stenger",
-	"role" : "Web Developer Superhero",
-	"contacts": {
-	    "mobile": "940-555-5555",
-	    "email": "ericcstenger@gmail.com",
-	    "github": "e-stenger",
-	    "twitter": "@eric_stenger",
-	    "location": "Justin, Tx"
-},
-	"welcomeMessage": "Welcome to my page!",
-	"skills": ["Awesomeness","Playing Guitar","Super Dad","Woodworking"],
-	"bioPic": "images/bio_pic.jpg"
+"name" : "Eric Stenger",
+"role" : "Web Developer Superhero",
+"contacts":
+[
+{
+"mobile": "940-555-5555",
+"email": "ericcstenger@gmail.com",
+"github": "e-stenger",
+"twitter": "@eric_stenger",
+"location": "Justin, Tx"
+}
+],
+"welcomeMessage": "Welcome to my page, why oh why am i doing this..oh yeah she's in the swing!",
+"skills": ["Awesomeness","Playing Guitar","Super Dad","Woodworking","Breaking this page!!","Not forEach loops"],
+"biopic": "images/bio_pic.jpg"
 };
-
+bio.display = function() {
 var formattedName = HTMLheaderName.replace("%data%",bio.name);
 var formattedRole = HTMLheaderRole.replace("%data%",bio.role);
-var formattedBiopic = HTMLbioPic.replace("%data%",bio.bioPic);
+var formattedBiopic = HTMLbioPic.replace("%data%",bio.biopic);
 var formattedWelcome = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
-
-var formattedContactInfo = [];
-formattedContactInfo.push(HTMLmobile.replace("%data%",bio.contacts.mobile));
-formattedContactInfo.push(HTMLemail.replace("%data%",bio.contacts.email));
-formattedContactInfo.push(HTMLgithub.replace("%data%",bio.contacts.github));
-formattedContactInfo.push(HTMLtwitter.replace("%data%",bio.contacts.twitter));
-
 $("#header").prepend(formattedRole);
 $("#header").prepend(formattedName);
 $("#header").append(formattedBiopic);
 $("#header").append(formattedWelcome);
-
-if(bio.skills.length > 0){
-	$("#header").append(HTMLskillsStart);
-	for(i in bio.skills){
-		$("#skills").append(HTMLskills.replace("%data%",bio.skills[i]));
-	}
+$("#header").append(HTMLskillsStart);
+if (bio.skills.length > 0) {
+bio.skills.forEach(function(skill) {
+var formattedSkills = HTMLskills.replace("%data%",skill);
+$("#skills").append(formattedSkills);
+});
 }
-
-for(i in formattedContactInfo){
-	$("#topContacts").append(formattedContactInfo[i]);
-	$("#footerContacts").append(formattedContactInfo[i]);
+if (bio.contacts.length > 0) {
+bio.contacts.forEach(function(info) {
+var formattedMobile = HTMLmobile.replace("%data%",info.mobile);
+$("#topContacts").append(formattedMobile);
+$("#footerContacts").append(formattedMobile);
+var formattedEmail = HTMLemail.replace("%data%",info.email);
+$("#topContacts").append(formattedEmail);
+$("#footerContacts").append(formattedEmail);
+var formattedGithub = HTMLgithub.replace("%data%",info.github);
+$("#topContacts").append(formattedGithub);
+$("#footerContacts").append(formattedGithub);
+var formattedTwitter = HTMLtwitter.replace("%data%",info.twitter);
+$("#topContacts").append(formattedTwitter);
+$("#footerContacts").append(formattedTwitter);
+var formattedLocation = HTMLlocation.replace("%data%",info.location);
+$("#topContacts").append(formattedLocation);
+$("#footerContacts").append(formattedLocation);
+});
 }
-
-var work = {
-	"jobs": [
-	{
-	"title": "Fire Control Electronics Tech",
-	"employer": "USNavy",
-	"location": "Charleston, SC",
-	"dates": "1990-1994",
-	"description": "Fire controlmen provide system employment recommendations; perform organizational and intermediate maintenance on digital computer equipment, subsystems, and systems; operate and maintain combat and weapons direction systems."
-	},	
-	{
-	"title": "Electronics Technician",
-	"employer": "Boeing",
-	"location": "Corinth, Tx",
-	"dates": "1994-1999",
-	"description": "Repair, test, and troubleshoot military and commercial electronics to component level."
-	},
-	{
-	"title": "Network and Field Technician",
-	"employer": "AT&T",
-	"location": "Ft. Worth, Tx",
-	"dates": "1999-2014",
-	"description": "Troubleshoot network issue, and install and repair various telecom sercies."
-	},
-	{
-	"title": "Load Balance Manager ",
-	"employer": "AT&T",
-	"location": "Dallas, Tx",
-	"dates": "2014-Present",
-	"description": "Maintain and direct work load for special services installation and repair technicians daily workload to meed customer commits."
-	}
-	]
-}
-
-function locationizer(work_obj) {
-	var locationArray = [];
-
-	for(job in work_obj.jobs) {
-		var newLocation = work_obj.jobs[job].location;
-		locationArray.push(newLocation);
-	}
-	return locationArray;
-}
-
-function displayWork() {
-
-	if(work.jobs.length > 0) {
-	
-		$("#workExperience").append(HTMLworkStart);
-
-		for(i in work.jobs) {
-			var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[i].employer);
-			var formattedWorkTitle = HTMLworkTitle.replace("%data%", work.jobs[i].title);
-			var formattedWorkLocation = HTMLworkLocation.replace("%data%", work.jobs[i].location);
-			var formattedDates = HTMLworkDates.replace("%data%", work.jobs[i].dates);
-			var formattedWorkDescription = HTMLworkDescription.replace("%data%", work.jobs[i].description);
-
-			var formattedEmployerWorkTitle = formattedEmployer + formattedWorkTitle;
-
-			$(".work-entry:last").append(formattedEmployerWorkTitle);
-			$(".work-entry:last").append(formattedWorkLocation);
-			$(".work-entry:last").append(formattedDates);
-			$(".work-entry:last").append(formattedWorkDescription);
-		}
-	}
-}
-displayWork();
-
-var education = {
-	"schools": [
-	{
-	"name": "Sanger High School",
-	"location": "Sanger, Tx",
-	"degree": "HS Diploma",
-	"date": "1987-1999"
-	},
-	{
-	"name": "FC Electonics A-School US Navy",
-	"location": "Great Lakes,Il",
-	"degree": "Certificate",
-	"date": 2001
-	},
-	{
-	"name": "FC Radar C-School US Navy",
-	"location": "Great Lakes, Il",
-	"degree": "Certificate",
-	"date": 2003
-	},
-	{
-	"name": "North Central Texas College",
-	"location": "Corinth, Tx",
-	"degree": "EMT Basic",
-	"date": "2005-2007"
-	},
-	{
-	"name": "North Central Texas College",
-	"location": "Corinth, Tx",
-	"degree": "AAS Business Management",
-	"date": "2003-2009"
-	}
-	],
-	"onlineClasses":[
-	{
-	"title": "Front-End Nanodegree",
-	"school": "Udacity",
-	"dates": "Nov16-Present",
-	"url": "https://www.udacity.com/"
-	}
-	]
-}
-
-function displayEducation (){
-
-	if(education.schools.length > 0) {
-
-		$("#education").append(HTMLschoolStart);
-
-		for(i in education.schools) {
-			var formattedName = HTMLschoolName.replace("%data%",education.schools[i].name);
-			var formattedDegree = HTMLschoolDegree.replace("%data%", education.schools[i].degree);
-			var formattedDates = HTMLschoolDates.replace("%data%",education.schools[i].date);
-			var formattedLocation = HTMLschoolLocation.replace("%data%",education.schools[i].location);
-
-			$(".education-entry:last").append(formattedName);
-			$(".education-entry:last").append(formattedDegree);
-			$(".education-entry:last").append(formattedDates);
-			$(".education-entry:last").append(formattedLocation);
-
-		}	
-	}
-}
-
-displayEducation();
-
-function displayOnlineClasses () {
-	$("#education").append(HTMLonlineClasses);	
-	$("#education").append(HTMLschoolStart);
-		for (i in education.onlineClasses) {
-			var formattedTitle = HTMLonlineTitle.replace("%data%",education.onlineClasses[i].title);
-			var formattedSchool = HTMLonlineSchool.replace("%data%",education.onlineClasses[i].school);
-			var formattedSchoolTitle = formattedTitle + formattedSchool
-
-			$(".education-entry:last").append(formattedSchoolTitle);
-			
-			var formattedDates = HTMLonlineDates.replace("%data%",education.onlineClasses[i].dates);
-			var formattedUrl = HTMLonlineURL.replace("%data%",education.onlineClasses[i].url);
-
-			$(".education-entry:last").append(formattedDates);
-			$(".education-entry:last").append(formattedUrl);
-
-		}
-}
-
-displayOnlineClasses();
-
-var projects = {
-	"projects": [
-	{
-	"title": "Raylyn's Architect Desk",
-	"date": "September 2, 2014",
-	"description": "Raylyn's Desk",
-	"image": ["images/KidsDesk.jpg"]
-	},
-	{
-	"title": "Platform Bed",
-	"date": "October 24, 2014",
-	"description": "Nate's Bed",
-	"image": ["images/PlatformBed.jpg"]
-	}
-	]
-}
-
-projects.display = function(){
-	for(i in projects.projects) {
-		$("#projects").append(HTMLprojectStart);
-
-			var formattedTitle = HTMLprojectTitle.replace("%data%",projects.projects[i].title);
-			$(".project-entry:last").append(formattedTitle);
-			var formattedDate = HTMLprojectDates.replace("%data%",projects.projects[i].date);
-			$(".project-entry:last").append(formattedDate);
-			var formattedDescription = HTMLprojectDescription.replace("%data%",projects.projects[i].description);
-			$(".project-entry:last").append(formattedDescription);
-			var formattedImage = HTMLprojectImage.replace("%data%",projects.projects[i].image);
-			$(".project-entry:last").append(formattedImage);
-
-			if(projects.projects[i].image.length > 0) {
-				for(image in projects.projects[i].image) {
-					var formattedImage = HTMLprojectImage.replace("%data%",projects.projects[i].image);
-					$(".project-entry:last").append(formattedImage);
-				}
-			}
-		}
 };
-
+bio.display();
+var work = {
+"jobs": [
+{
+"title": "Fire Control Electronics Tech",
+"employer": "USNavy",
+"location": "Charleston, SC",
+"dates": "1990-1994",
+"description": "Fire controlmen provide system employment recommendations; perform organizational and intermediate maintenance on digital computer equipment, subsystems, and systems; operate and maintain combat and weapons direction systems."
+},
+{
+"title": "Electronics Technician",
+"employer": "Boeing",
+"location": "Corinth, Tx",
+"dates": "1994-1999",
+"description": "Repair, test, and troubleshoot military and commercial electronics to component level."
+},
+{
+"title": "Network and Field Technician",
+"employer": "AT&T",
+"location": "Ft. Worth, Tx",
+"dates": "1999-2014",
+"description": "Troubleshoot network issue, and install and repair various telecom sercies."
+},
+{
+"title": "Load Balance Manager ",
+"employer": "AT&T",
+"location": "Dallas, Tx",
+"dates": "2014-Present",
+"description": "Maintain and direct work load for special services installation and repair technicians daily workload to meed customer commits."
+}
+]
+};
+work.display = function () {
+$("#workExperience").append(HTMLworkStart);
+if(work.jobs.length > 0) {
+work.jobs.forEach(function(job) {
+var formattedEmployer = HTMLworkEmployer.replace("%data%", job.employer);
+var formattedWorkTitle = HTMLworkTitle.replace("%data%", job.title);
+var formattedEmployerWorkTitle = formattedEmployer + formattedWorkTitle;
+$(".work-entry:last").append(formattedEmployerWorkTitle);
+var formattedWorkLocation = HTMLworkLocation.replace("%data%", job.location);
+$(".work-entry:last").append(formattedWorkLocation);
+var formattedDates = HTMLworkDates.replace("%data%", job.dates);
+$(".work-entry:last").append(formattedDates);
+var formattedWorkDescription = HTMLworkDescription.replace("%data%", job.description);
+$(".work-entry:last").append(formattedWorkDescription);
+});
+}
+};
+work.display();
+var education = {
+"schools": [
+{
+"name": "Sanger High School",
+"location": "Sanger, Tx",
+"degree": "HS Diploma",
+"majors": "High School Stuff",
+"dates": "1987-1999",
+"url": "http://www.sangerisd.net/Domain/32"
+},
+{
+"name": "FC Electonics A-School US Navy",
+"location": "Great Lakes,Il",
+"degree": "Certificate",
+"majors": "Marching and Schooling",
+"dates": 2001,
+"url": "https://www.cnic.navy.mil/GreatLakes/"
+},
+{
+"name": "FC Radar C-School US Navy",
+"location": "Great Lakes, Il",
+"degree": "Certificate",
+"majors": "Radar Troublshooting",
+"dates": 2003,
+"url": "https://www.cnic.navy.mil/GreatLakes/"
+},
+{
+"name": "North Central Texas College",
+"location": "Corinth, Tx",
+"degree": "EMT Basic",
+"majors": "Break in Business Management Degree, EMT Stuff",
+"dates": "2005-2007",
+"url": "http://www.nctc.edu/"
+},
+{
+"name": "North Central Texas College",
+"location": "Corinth, Tx",
+"degree": "AAS Business Management",
+"majors": "Business Management",
+"dates": "2003-2009",
+"url": "http://www.nctc.edu/"
+}
+],
+"onlineClasses":[
+{
+"title": "Front-End Nanodegree",
+"school": "Udacity",
+"dates": "Nov16-Present",
+"url": "https://www.udacity.com/"
+}
+]
+};
+education.display = function() {
+$("#education").append(HTMLschoolStart);
+if(education.schools.length > 0) {
+education.schools.forEach(function(school) {
+var formattedName = HTMLschoolName.replace("%data%",school.name);
+$(".education-entry:last").append(formattedName);
+var formattedLocation = HTMLschoolLocation.replace("%data%", school.location);
+$(".education-entry:last").append(formattedLocation);
+var formattedDegree = HTMLschoolDegree.replace("%data%", school.degree);
+$(".education-entry:last").append(formattedDegree);
+var formattedMajor = HTMLschoolMajor.replace("%data%", school.major);
+var formattedDates = HTMLschoolDates.replace("%data%", school.dates);
+$(".education-entry:last").append(formattedDates);
+var formattedUrl = HTMLonlineURL.replace("%data%",school.url);
+$(".education-entry:last").append(formattedUrl);
+});
+}
+$("#education").append(HTMLonlineClasses);
+$("#education").append(HTMLschoolStart);
+if(education.onlineClasses.length > 0) {
+education.onlineClasses.forEach(function(online) {
+var formattedTitle = HTMLonlineTitle.replace("%data%",online.title);
+var formattedSchool = HTMLonlineSchool.replace("%data%", online.school);
+var formattedSchoolTitle = formattedTitle + formattedSchool;
+$(".education-entry:last").append(formattedSchoolTitle);
+var formattedDates = HTMLonlineDates.replace("%data%", online.dates);
+$(".education-entry:last").append(formattedDates);
+var formattedUrl = HTMLonlineURL.replace("%data%", online.url);
+$(".education-entry:last").append(formattedUrl);
+});
+}
+};
+education.display();
+var projects = {
+"projects": [
+{
+"title": "Raylyn's Architect Desk",
+"date": "September 2, 2014",
+"description": "Miniture architect desk i made for my daughter.",
+"image": ["images/KidsDesk.jpg"]
+},
+{
+"title": "Nate's Platform Bed",
+"date": "October 24, 2014",
+"description": "Platform bed i made for my son, photo from bottom.",
+"image": ["images/PlatformBed.jpg"]
+}
+]
+};
+projects.display = function() {
+if(projects.projects.length > 0) {
+projects.projects.forEach(function(project) {
+$("#projects").append(HTMLprojectStart);
+var formattedTitle = HTMLprojectTitle.replace("%data%", project.title);
+$(".project-entry:last").append(formattedTitle);
+var formattedDate = HTMLprojectDates.replace("%data%", project.date);
+$(".project-entry:last").append(formattedDate);
+var formattedDescription = HTMLprojectDescription.replace("%data%", project.description);
+$(".project-entry:last").append(formattedDescription);
+var formattedImage = HTMLprojectImage.replace("%data%", project.image);
+$(".project-entry:last").append(formattedImage);
+});
+}
+};
 projects.display();
-
-$(document).click(function(loc){
-	var x = loc.pageX;
-	var y = loc.pageY;
-	logClicks(x,y);});
 
 $("#mapDiv").append(googleMap);
