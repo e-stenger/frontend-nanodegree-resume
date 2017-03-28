@@ -68,21 +68,8 @@ y: y
 console.log('x location: ' + x + '; y location: ' + y);
 }
 $(document).click(function(loc) {
-<<<<<<< HEAD
-// your code goes here!
 var x = loc.pageX;
-var y = loc.pageY
-||||||| merged common ancestors
-  // your code goes here!
-  var x = loc.pageX;
-  var y = loc.pageY
-
-  logclicks(x,y);
-=======
-  // your code goes here!
-  var x = loc.pageX;
-  var y = loc.pageY
->>>>>>> 0a83aba86281d47b54c19a7ac9abf31200a88524
+var y = loc.pageY;
 });
 /*
 This is the fun part. Here's where we generate the custom Google Map for the website.
@@ -94,7 +81,6 @@ var map;    // declares a global map variable
 Start here! initializeMap() is called when page is loaded.
 */
 function initializeMap() {
-<<<<<<< HEAD
 var locations;
 var mapOptions = {
 disableDefaultUI: true
@@ -201,8 +187,6 @@ locations = locationFinder();
 // pinPoster(locations) creates pins on the map for each location in
 // the locations array
 pinPoster(locations);
-||||||| merged common ancestors
-
   var locations;
 
   var mapOptions = {
@@ -332,11 +316,7 @@ pinPoster(locations);
   // pinPoster(locations) creates pins on the map for each location in
   // the locations array
   pinPoster(locations);
-
-=======
-
   var locations;
-
   var mapOptions = {
     disableDefaultUI: true
   };
@@ -465,8 +445,6 @@ pinPoster(locations);
   // pinPoster(locations) creates pins on the map for each location in
   // the locations array
   pinPoster(locations);
-
->>>>>>> 0a83aba86281d47b54c19a7ac9abf31200a88524
 }
 /*
 Uncomment the code below when you're ready to implement a Google Map!
