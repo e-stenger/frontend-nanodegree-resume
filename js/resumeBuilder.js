@@ -175,32 +175,34 @@ education.display();
 var projects = {
     "projects": [{
             "title": "Raylyn's Architect Desk",
-            "date": "September 2, 2014",
+            "dates": "September 2, 2014",
             "description": "Miniture architect desk i made for my daughter.",
-            "images": ["images/KidsDesk.jpg"]
+            "images": ["images/KidsDesk.jpg","images/KidsDesk2.jpg"]
         },
         {
-            "title": "Nate's Platform Bed",
-            "date": "October 24, 2014",
-            "description": "Platform bed I made for my son, photo from bottom.",
-            "images": ["images/PlatformBed.jpg"]
+            "title": "Bookcase",
+            "dates": "October 24, 2014",
+            "description": "Um, Wooden Bookcase",
+            "images": ["images/rsz_barebookcase.jpg","images/rsz_stainedbookcase.jpg"]
         }
     ]
 };
 projects.display = function() {
-    if (projects.projects.length > 0) {
         projects.projects.forEach(function(project) {
             $("#projects").append(HTMLprojectStart);
+
             var formattedTitle = HTMLprojectTitle.replace("%data%", project.title);
             $(".project-entry:last").append(formattedTitle);
-            var formattedDate = HTMLprojectDates.replace("%data%", project.date);
+            var formattedDate = HTMLprojectDates.replace("%data%", project.dates);
             $(".project-entry:last").append(formattedDate);
             var formattedDescription = HTMLprojectDescription.replace("%data%", project.description);
             $(".project-entry:last").append(formattedDescription);
-            var formattedImage = HTMLprojectImage.replace("%data%", project.images);
+        
+        project.images.forEach(function(image) {
+            var formattedImage = HTMLprojectImage.replace("%data%", image);
             $(".project-entry:last").append(formattedImage);
         });
-    }
+    });
 };
 projects.display();
 
