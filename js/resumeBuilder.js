@@ -2,17 +2,15 @@ var bio = {
 "name" : "Eric Stenger",
 "role" : "Web Developer Superhero",
 "contacts":
-[
 {
 "mobile": "940-555-5555",
 "email": "ericcstenger@gmail.com",
 "github": "e-stenger",
 "twitter": "@eric_stenger",
 "location": "Justin, Tx"
-}
-],
+},
 "welcomeMessage": "Welcome to my page, why oh why am i doing this..oh yeah she's in the swing!",
-"skills": ["Awesomeness","Playing Guitar","Super Dad","Woodworking","Breaking this page!!","Not forEach loops"],
+"skills": ["Not so much THIS!","Playing Guitar","Super Dad","Woodworking","Breaking this page!!","Not forEach loops"],
 "biopic": "images/bio_pic.jpg"
 };
 bio.display = function() {
@@ -20,6 +18,11 @@ var formattedName = HTMLheaderName.replace("%data%",bio.name);
 var formattedRole = HTMLheaderRole.replace("%data%",bio.role);
 var formattedBiopic = HTMLbioPic.replace("%data%",bio.biopic);
 var formattedWelcome = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
+$("#topContacts").append(HTMLmobile.replace("%data%", bio.contacts.mobile));
+$("#topContacts").append(HTMLemail.replace("%data%", bio.contacts.email));
+$("#topContacts").append(HTMLgithub.replace("%data%", bio.contacts.github));
+$("#topContacts").append(HTMLtwitter.replace("%data%", bio.contacts.twitter));
+$("#topContacts").append(HTMLlocation.replace("%data%", bio.contacts.location));
 $("#header").prepend(formattedRole);
 $("#header").prepend(formattedName);
 $("#header").append(formattedBiopic);
@@ -29,25 +32,6 @@ if (bio.skills.length > 0) {
 bio.skills.forEach(function(skill) {
 var formattedSkills = HTMLskills.replace("%data%",skill);
 $("#skills").append(formattedSkills);
-});
-}
-if (bio.contacts.length > 0) {
-bio.contacts.forEach(function(info) {
-var formattedMobile = HTMLmobile.replace("%data%",info.mobile);
-$("#topContacts").append(formattedMobile);
-$("#footerContacts").append(formattedMobile);
-var formattedEmail = HTMLemail.replace("%data%",info.email);
-$("#topContacts").append(formattedEmail);
-$("#footerContacts").append(formattedEmail);
-var formattedGithub = HTMLgithub.replace("%data%",info.github);
-$("#topContacts").append(formattedGithub);
-$("#footerContacts").append(formattedGithub);
-var formattedTwitter = HTMLtwitter.replace("%data%",info.twitter);
-$("#topContacts").append(formattedTwitter);
-$("#footerContacts").append(formattedTwitter);
-var formattedLocation = HTMLlocation.replace("%data%",info.location);
-$("#topContacts").append(formattedLocation);
-$("#footerContacts").append(formattedLocation);
 });
 }
 };
@@ -198,7 +182,7 @@ var projects = {
 {
 "title": "Nate's Platform Bed",
 "date": "October 24, 2014",
-"description": "Platform bed i made for my son, photo from bottom.",
+"description": "Platform bed I made for my son, photo from bottom.",
 "image": ["images/PlatformBed.jpg"]
 }
 ]
@@ -219,5 +203,9 @@ $(".project-entry:last").append(formattedImage);
 }
 };
 projects.display();
-
+$("#footerContacts").append(HTMLmobile.replace("%data%", bio.contacts.mobile));
+$("#footerContacts").append(HTMLemail.replace("%data%", bio.contacts.email));
+$("#footerContacts").append(HTMLgithub.replace("%data%", bio.contacts.github));
+$("#footerContacts").append(HTMLtwitter.replace("%data%", bio.contacts.twitter));
+$("#footerContacts").append(HTMLlocation.replace("%data%", bio.contacts.location));
 $("#mapDiv").append(googleMap);
