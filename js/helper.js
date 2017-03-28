@@ -261,8 +261,8 @@ pinPoster(locations);
     // hmmmm, I wonder what this is about...
     google.maps.event.addListener(marker, 'click', function() {
       // your code goes here!
-      infoWindow.setContent('<h6' + marker.title + '</h6');
       infoWindow.open(map, marker);
+      infoWindow.setContent('<h6>' + marker.title + '</h6>');
     });
 
     // this is where the pin actually gets added to the map.
